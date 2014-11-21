@@ -9,38 +9,37 @@ describe 'blog'
 
 # Run in HBase shell the following to add some data:
 
-put 'blog', '20131020162535', 'info:title', 'Why use HBase?'
-put 'blog', '20131020162535', 'info:author', 'Jane Doe'
-put 'blog', '20131020162535', 'info:category', 'Persistence'
-put 'blog', '20131020162535', 'content:', 'HBase is a column-oriented...'
+put 'blog', '20141120162535', 'info:title', 'Teiid JDBC Client'
+put 'blog', '20141120162535', 'info:author', 'Kylin Soong'
+put 'blog', '20141120162535', 'info:category', 'teiid'
+put 'blog', '20141120162535', 'info:url', 'http://ksoong.org/teiid-jdbc-client/'
+put 'blog', '20141120162535', 'content:', 'The Teiid JDBC API provides Java Database Connectivity (JDBC) access to any Virtual Database (VDB) deployed on a Teiid Server...'
 
-put 'blog', '20131107145045', 'info:title', 'Intro to Bigtable'
-put 'blog', '20131107145045', 'info:author', 'John'
-put 'blog', '20131107145045', 'info:category', 'Persistence'
-put 'blog', '20131107145045', 'content:', 'Google Bigtable is...'
-put 'blog', '20131107145045', 'content:', 'Google\'s Bigtable is...'
-put 'blog', '20131107145045', 'info:author', 'John Doe'
-put 'blog', '20131107145045', 'info:category', 'Persistence'
+put 'blog', '20141121185045', 'info:title', 'JPA 2 Employee Demo with Hibernate EclipseLink'
+put 'blog', '20141121185045', 'info:author', 'Kylin Soong'
+put 'blog', '20141121185045', 'info:category', 'javaee'
+put 'blog', '20141121185045', 'info:url', 'http://ksoong.org/javaee/2014/08/08/jpa-2.0-demo-with-hibernate-eclipselink/'
+put 'blog', '20141121185045', 'content:', 'Hibernate and EclipseLink both fully support JSR-317 (JPA 2.0), Hibernate have the largest community and is widely used/tested, EclipseLink are more light weight and feature at Service Data Objects(SDO)...'
+
 
 
 # Following commands retrieve data:
 
-get 'blog', '20131020162535'
-get 'blog', '20131020162535', { COLUMN => 'info:title' }
-get 'blog', '20131020162535', { COLUMN => [ 'info:title', 'info:author', 'info:category' ] }
+get 'blog', '20141120162535'
+get 'blog', '20141120162535', { COLUMN => 'info:title' }
+get 'blog', '20141120162535', { COLUMN => [ 'info:title', 'info:author', 'info:category' ] }
 
-get 'blog', '20131107145045'
-get 'blog', '20131107145045', { COLUMN => 'info:author' }
-get 'blog', '20131107145045', { COLUMN => 'info:author', VERSIONS => 3 }
-get 'blog', '20131107145045', { COLUMN => 'content:', VERSIONS => 3 }
+get 'blog', '20141121185045'
+get 'blog', '20141121185045', { COLUMN => 'info:author' }
+get 'blog', '20141121185045', { COLUMN => 'info:author', VERSIONS => 3 }
+get 'blog', '20141121185045', { COLUMN => 'content:', VERSIONS => 3 }
 
 # Do some scans
 
 scan 'blog', { LIMIT => 1 }
-scan 'blog', { STARTROW => '20131107145045' }
-scan 'blog', { STARTROW => '20131000', STOPROW => '20131100' }
-scan 'blog', { STARTROW => '20131000', STOPROW => '20131100', COLUMNS => 'info:' }
-scan 'blog', { STARTROW => '20131000', STOPROW => '20130500', COLUMNS => 'info:' }
+scan 'blog', { STARTROW => '20141121185045' }
+scan 'blog', { STARTROW => '20141110', STOPROW => '20141210' }
+scan 'blog', { STARTROW => '20141110', STOPROW => '20141210', COLUMNS => 'info:' }
 
 ########################################################################################################
 
